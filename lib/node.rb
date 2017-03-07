@@ -8,20 +8,24 @@ class Node
   end
   
   def push(data)
-    if @next_node.nil?
-      @next_node = Node.new(data)
+    if tail?
+      set_next(data)
     else
       @next_node.push(data)
     end
   end
 
   def count(number)
-    return number if @next_node.nil?
+    return number if tail?
     return @next_node.count(number + 1)
   end
   
   def set_next(data)
     @next_node = Node.new(data)
+  end
+
+  def tail?
+    @next_node.nil?
   end
 
 end

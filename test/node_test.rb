@@ -47,4 +47,18 @@ class NodeTest < Minitest::Test
 
     assert_equal 2, node.count(1)
   end
+
+  def test_node_knows_its_tail
+    node = Node.new("Dudley")
+
+    assert node.tail? 
+  end
+
+  def test_node_knows_not_tail
+    node = Node.new("Vernon")
+
+    node.set_next("Petunia")
+
+    refute node.tail?
+  end
 end
