@@ -29,6 +29,22 @@ class NodeTest < Minitest::Test
 
     assert_equal Node, node.next_node.class
     assert_equal "Ron", node.next_node.data
+  end
 
+
+  def test_node_can_set_next_node
+    node = Node.new("Hagrid")
+
+    node.set_next("Lucius")
+
+    assert_equal "Lucius", node.next_node.data
+    assert_equal Node, node.next_node.class
+  end
+
+  def test_node_can_count_next
+    node = Node.new("Bellatrix")
+    node.set_next("Narcissa")
+
+    assert_equal 2, node.count(1)
   end
 end

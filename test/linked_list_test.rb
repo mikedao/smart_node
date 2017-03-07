@@ -36,4 +36,22 @@ class LinkedListTest < Minitest::Test
     assert_equal Node , l.head.next_node.next_node.next_node.class
   end
 
+
+  def test_list_can_count_nodes
+    l = LinkedList.new
+    assert_equal 0, l.count
+    
+    l.push("Harry")
+    assert_equal 1, l.count
+  
+    l.push("Hermione")
+    assert_equal 2, l.count
+    
+    l.push("Snape")
+    assert_equal 3, l.count
+
+    l.push("McGonagall")
+    assert_equal 4, l.count
+  end
+    
 end

@@ -13,4 +13,9 @@ class LinkedList
       @head.push(data)
     end
   end
+
+  def count
+    return 0 if @head.nil?
+    return @head.count(1)
+  end
 end
