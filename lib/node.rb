@@ -21,7 +21,11 @@ class Node
   end
   
   def set_next(data)
-    @next_node = Node.new(data)
+    if data.class == Node
+      @next_node = data
+    else
+      @next_node = Node.new(data)
+    end
   end
 
   def tail?
@@ -37,7 +41,7 @@ class Node
       @next_node.pop
     end
   end 
-  
+
   def next_node_tail?
     @next_node.tail?
   end

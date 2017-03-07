@@ -81,4 +81,18 @@ class NodeTest < Minitest::Test
     assert node.next_node.next_node_tail?
   end
 
+  def test_set_next_can_handle_nodes_and_strings
+    node = Node.new("Derek")
+    node_2 = Node.new("Hansel")
+
+    node.set_next("Matilda")
+
+    assert_equal "Matilda", node.next_node.data
+    assert_equal Node, node.next_node.class 
+
+    node.set_next(node_2)
+    assert_equal "Hansel", node.next_node.data
+    assert_equal Node, node.next_node.class
+  end
+  
 end

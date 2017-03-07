@@ -81,4 +81,53 @@ class LinkedListTest < Minitest::Test
 
     refute l.pop
   end
+
+  def test_list_can_unshift
+    l = LinkedList.new
+    l.push("Bon Jovi")
+
+    l.unshift("Bruce Springsteen")
+    
+    assert_equal 2, l.count
+    assert_equal "Bruce Springsteen", l.head.data
+    assert_equal "Bon Jovi", l.head.next_node.data
+    assert_equal Node, l.head.next_node.class
+  end
+
+  def test_list_can_unshift_empty
+    l = LinkedList.new
+    l.unshift("Gin Blossoms")
+
+    assert_equal "Gin Blossoms", l.head.data
+    assert_equal Node, l.head.class
+  end
+
+  def test_can_shift_empty
+    l = LinkedList.new
+    refute l.shift
+  end
+
+  def test_can_shift_list_of_one_node
+    l = LinkedList.new
+    l.push("Lemonheads")
+
+    assert_equal 1, l.count
+    assert_equal "Lemonheads", l.shift
+    assert l.empty?
+    assert_equal 0, l.count
+  end
+
+  def test_can_shift_list_of_many_nodes
+    l = LinkedList.new
+    l.push("Harry")
+    l.push("Hermione")
+    l.push("Snape")
+    l.push("McGonagall")
+
+    assert_equal 4, l.count
+    assert_equal "Harry", l.shift
+    assert_equal 3, l.count
+  end
+    
+
 end

@@ -38,4 +38,24 @@ class LinkedList
   def empty?
     @head.nil?
   end
+
+  def unshift(data)
+    if empty?
+      @head = Node.new(data)
+    else
+      temp = @head
+      @head = Node.new(data)
+      @head.set_next(temp)
+    end
+  end
+
+  def shift
+    if empty?
+      return nil
+    else
+      value = @head.data
+      @head = @head.next_node
+      return value
+    end
+  end
 end
