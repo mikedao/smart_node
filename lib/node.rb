@@ -46,5 +46,15 @@ class Node
     @next_node.tail?
   end
 
+  def includes?(word)
+    if @data == word
+      return true
+    elsif tail?
+      return false
+    else
+      return @next_node.includes?(word)
+    end
+  end
+
 
 end

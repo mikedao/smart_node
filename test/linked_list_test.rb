@@ -128,6 +128,23 @@ class LinkedListTest < Minitest::Test
     assert_equal "Harry", l.shift
     assert_equal 3, l.count
   end
+
+  def test_list_can_search_for_includes
+    l = LinkedList.new
+    l.push("Harry")
+    l.push("Hermione")
+    l.push("Snape")
+    l.push("McGonagall")
+    
+    assert l.includes?("Harry")
+    refute l.includes?("Bob")
+  end
+
+  def test_list_includes_works_on_empty_list
+    l = LinkedList.new
+    
+    refute l.includes?("Bob")
+  end
     
 
 end

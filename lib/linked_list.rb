@@ -58,4 +58,12 @@ class LinkedList
       return value
     end
   end
+
+  def includes?(word)
+    if empty?
+      return false
+    else
+      return @head.includes?(word)
+    end
+  end
 end
