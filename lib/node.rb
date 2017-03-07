@@ -28,4 +28,19 @@ class Node
     @next_node.nil?
   end
 
+  def pop
+    if next_node_tail?
+      value = @next_node.data
+      @next_node = nil
+      return value
+    else
+      @next_node.pop
+    end
+  end 
+  
+  def next_node_tail?
+    @next_node.tail?
+  end
+
+
 end

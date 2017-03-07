@@ -7,6 +7,7 @@ class LinkedListTest < Minitest::Test
     l = LinkedList.new
 
     refute l.head
+    assert l.empty?
   end
 
   def test_list_can_push_one_item_and_its_a_node
@@ -36,7 +37,6 @@ class LinkedListTest < Minitest::Test
     assert_equal Node , l.head.next_node.next_node.next_node.class
   end
 
-
   def test_list_can_count_nodes
     l = LinkedList.new
     assert_equal 0, l.count
@@ -54,4 +54,31 @@ class LinkedListTest < Minitest::Test
     assert_equal 4, l.count
   end
     
+  def test_list_can_pop_a_node
+    l = LinkedList.new
+    
+    l.push("Harry")
+    l.push("Hermione")
+    l.push("Snape")
+    l.push("McGonagall")
+
+    assert_equal 4, l.count
+    assert_equal "McGonagall", l.pop
+    assert_equal 3, l.count
+  end
+
+  def test_list_can_pop_only_node
+    l = LinkedList.new
+    l.push("Hermione")
+
+    assert_equal 1, l.count
+    assert_equal "Hermione", l.pop
+    assert_equal 0, l.count
+  end
+
+  def test_list_cant_pop_when_empty
+    l = LinkedList.new
+
+    refute l.pop
+  end
 end

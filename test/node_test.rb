@@ -61,4 +61,24 @@ class NodeTest < Minitest::Test
 
     refute node.tail?
   end
+
+  def test_node_can_pop
+    node = Node.new("Vernon")
+
+    node.set_next("Petunia")
+
+    assert_equal "Petunia", node.pop
+    refute node.next_node
+  end
+
+  def test_node_knows_if_next_node_is_tail
+    node = Node.new("Vernon")
+
+    node.set_next("Petunia")
+    node.next_node.set_next("Dudley")
+
+    refute node.next_node_tail?
+    assert node.next_node.next_node_tail?
+  end
+
 end
