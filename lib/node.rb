@@ -16,8 +16,11 @@ class Node
   end
 
   def count(number)
-    return number if tail?
-    return @next_node.count(number + 1)
+    if tail?
+      return number
+    else
+      return @next_node.count(number + 1)
+    end
   end
   
   def set_next(data)
