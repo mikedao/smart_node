@@ -66,4 +66,10 @@ class LinkedList
       return @head.includes?(word)
     end
   end
+
+  def find(search_term, number)
+    return nil if empty?
+
+    @head.find(search_term, number)
+  end
 end

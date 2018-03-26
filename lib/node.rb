@@ -59,5 +59,23 @@ class Node
     end
   end
 
+  def find(search_term, number)
+    if search_term == @data
+      @next_node.build_string(@data, number - 1)
+    elsif tail?
+      return nil
+    else
+      @next_node.find(search_term, number)
+    end
+  end
 
+  def build_string(string, number)
+    if number > 0
+      string += " #{@data}"
+      return string if tail?
+      @next_node.build_string(string, number - 1)
+    else
+      return string
+    end
+  end
 end

@@ -145,6 +145,51 @@ class LinkedListTest < Minitest::Test
     
     refute l.includes?("Bob")
   end
-    
 
+  def test_it_can_find_a_node
+    l = LinkedList.new
+    l.push("Harry")
+    l.push("Hermione")
+    l.push("Snape")
+    l.push("McGonagall")
+
+    result = l.find("Snape", 1)
+
+    assert_equal "Snape", result
+  end
+
+  def test_it_can_find_mult_nodes
+    l = LinkedList.new
+    l.push("Harry")
+    l.push("Hermione")
+    l.push("Snape")
+    l.push("McGonagall")
+
+    result = l.find("Hermione", 2)
+
+    assert_equal "Hermione Snape", result
+  end
+
+  def test_it_can_find_head
+    l = LinkedList.new
+    l.push("Harry")
+    l.push("Hermione")
+    l.push("Snape")
+    l.push("McGonagall")
+
+    result = l.find("Harry", 5)
+    expected = "Harry Hermione Snape McGonagall"
+    assert_equal expected, result
+  end
+
+  def test_find_nil
+    l = LinkedList.new
+    l.push("Harry")
+    l.push("Hermione")
+    l.push("Snape")
+    l.push("McGonagall")
+
+    result = l.find("George", 1)
+    assert_nil result
+  end
 end
