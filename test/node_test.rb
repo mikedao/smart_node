@@ -6,7 +6,7 @@ class NodeTest < Minitest::Test
 
   def test_a_node_holds_data
     node = Node.new("pizza")
-    
+
     assert_equal "pizza", node.data
   end
 
@@ -51,7 +51,7 @@ class NodeTest < Minitest::Test
   def test_node_knows_its_tail
     node = Node.new("Dudley")
 
-    assert node.tail? 
+    assert node.tail?
   end
 
   def test_node_knows_not_tail
@@ -88,11 +88,11 @@ class NodeTest < Minitest::Test
     node.set_next("Matilda")
 
     assert_equal "Matilda", node.next_node.data
-    assert_equal Node, node.next_node.class 
+    assert_equal Node, node.next_node.class
 
     node.set_next(node_2)
     assert_equal "Hansel", node.next_node.data
     assert_equal Node, node.next_node.class
   end
-  
+
 end

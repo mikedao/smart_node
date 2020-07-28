@@ -1,12 +1,12 @@
 class Node
   attr_reader :data,
-              :next_node
+    :next_node
 
   def initialize(data)
     @data       = data
     @next_node  = nil
   end
-  
+
   def push(data)
     if tail?
       set_next(data)
@@ -17,12 +17,12 @@ class Node
 
   def count(number)
     if tail?
-      return number
+      number
     else
-      return @next_node.count(number + 1)
+      @next_node.count(number + 1)
     end
   end
-  
+
   def set_next(data)
     if data.class == Node
       @next_node = data
@@ -39,11 +39,11 @@ class Node
     if next_node_tail?
       value = @next_node.data
       @next_node = nil
-      return value
+      value
     else
       @next_node.pop
     end
-  end 
+  end
 
   def next_node_tail?
     @next_node.tail?
@@ -51,11 +51,11 @@ class Node
 
   def includes?(word)
     if @data == word
-      return true
+      true
     elsif tail?
-      return false
+      false
     else
-      return @next_node.includes?(word)
+      @next_node.includes?(word)
     end
   end
 
@@ -63,7 +63,7 @@ class Node
     if search_term == @data
       @next_node.build_string(@data, number - 1)
     elsif tail?
-      return nil
+      nil
     else
       @next_node.find(search_term, number)
     end
@@ -72,10 +72,13 @@ class Node
   def build_string(string, number)
     if number > 0
       string += " #{@data}"
-      return string if tail?
-      @next_node.build_string(string, number - 1)
+      if tail?
+        string
+      else
+        @next_node.build_string(string, number - 1)
+      end
     else
-      return string
+      string
     end
   end
 end

@@ -15,26 +15,29 @@ class LinkedList
   end
 
   def count
-    return 0 if empty?
-    return @head.count(1)
+    if empty?
+      0
+    else
+      @head.count(1)
+    end
   end
 
   def pop
     if empty?
-      return nil
+      nil
     elsif @head.tail?
       value = @head.data
       @head = nil
-      return value
+      value
     elsif @head.next_node.tail?
       value = @head.next_node.data
       @head = nil
-      return value
+      value
     else
-      return @head.next_node.pop
+      @head.next_node.pop
     end
   end
-  
+
   def empty?
     @head.nil?
   end
@@ -51,25 +54,27 @@ class LinkedList
 
   def shift
     if empty?
-      return nil
+      nil
     else
       value = @head.data
       @head = @head.next_node
-      return value
+      value
     end
   end
 
   def includes?(word)
     if empty?
-      return false
+      false
     else
-      return @head.includes?(word)
+      @head.includes?(word)
     end
   end
 
   def find(search_term, number)
-    return nil if empty?
-
-    @head.find(search_term, number)
+    if empty?
+      nil
+    else
+      @head.find(search_term, number)
+    end
   end
 end
